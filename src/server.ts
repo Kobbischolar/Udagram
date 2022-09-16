@@ -28,19 +28,44 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
+    app.get('/filteredimage', async (req, res) => {
 
-  //! END @TODO1
-  
-  // Root Endpoint
-  // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
-    res.send("try GET /filteredimage?image_url={{}}")
-  } );
-  
+      const image_url: string = req.query.image_url.toString();
+      
+      if (!image_url) {
 
-  // Start the Server
-  app.listen( port, () => {
-      console.log( `server running http://localhost:${ port }` );
-      console.log( `press CTRL+C to stop server` );
-  } );
+        res.status(400).send('image url is required');
+
+      }
+      
+      const filtered_image: string = await filterImageFromURL(image_url);
+
+      if (!filtered_image) {   
+    
+        res.status(200).sendFile(filtered_image, () => {
+        
+          deleteLocalFiles([filtered_image])
+      
+        });
+    
+      };
+
+    });
+
+    //! END @TODO1
+
+
+    // Root Endpoint
+    // Displays a simple message to the user
+    app.get("/", async (req, res) => {
+      res.send("try GET /filteredimage?image_url={{}}");
+    });
+
+
+    // Start the Server
+    app.listen(port, () => {
+      console.log(`server running http://localhost:${port}`);
+      console.log(`press CTRL+C to stop server`);
+    });
+
 })();
