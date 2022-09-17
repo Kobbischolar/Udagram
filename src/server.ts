@@ -40,7 +40,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       
       const filtered_image: string = await filterImageFromURL(image_url);
 
-      if (!filtered_image) {   
+      if (image_url) {   
     
         res.status(200).sendFile(filtered_image, () => {
         
