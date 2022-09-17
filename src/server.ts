@@ -38,8 +38,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
       }
       
-      
 
+      
       if (image_url) {   
 
         const filtered_image: string = await filterImageFromURL(image_url);
