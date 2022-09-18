@@ -49,6 +49,6 @@ Add your own domain name and have it point to the running services (try adding a
 
 
 
-Endpoint :   http://yeboah-udagram-dev.us-east-1.elasticbeanstalk.com/
+Endpoint:     http://yeboah-udagram-dev.us-east-1.elasticbeanstalk.com/
 
-Github:     https://github.com/Kobbischolar/Udagram
+Github Repo:  https://github.com/Kobbischolar/Udagram / https://github.com/Kobbischolar/Udagram.git
